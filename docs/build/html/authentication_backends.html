@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Authentication Backends &mdash; shuntapp 2.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Settings" href="settings.html" />
+    <link rel="prev" title="Sample usage" href="sample_usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> shuntapp
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_usage.html">Sample usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Authentication Backends</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#token-based-authentication">Token Based Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json-web-token-authentication">JSON Web Token Authentication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#django-settings">Django Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#urls-py">urls.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Settings &amp; API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base_endpoints.html">Base Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="token_endpoints.html">Token Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jwt_endpoints.html">JWT Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="social_endpoints.html">Social Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration_guide.html">Migration Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">shuntapp</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Authentication Backends</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/authentication_backends.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="authentication-backends">
+<span id="id1"></span><h1>Authentication Backends<a class="headerlink" href="#authentication-backends" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both Token Based and JWT Authentication can coexist at same time.
+Simply, follow instructions for both authentication methods and it should work.</p>
+</div>
+<div class="section" id="token-based-authentication">
+<h2>Token Based Authentication<a class="headerlink" href="#token-based-authentication" title="Permalink to this headline">¶</a></h2>
+<p>Add <code class="docutils literal notranslate"><span class="pre">'rest_framework.authtoken'</span></code> to <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="p">(</span><span class="o">...</span><span class="p">),</span>
+    <span class="s1">&#39;rest_framework&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rest_framework.authtoken&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;djoser&#39;</span><span class="p">,</span>
+    <span class="p">(</span><span class="o">...</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Configure <code class="docutils literal notranslate"><span class="pre">urls.py</span></code>. Pay attention to <code class="docutils literal notranslate"><span class="pre">djoser.url.authtoken</span></code> module path:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="o">...</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^auth/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;djoser.urls&#39;</span><span class="p">)),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^auth/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;djoser.urls.authtoken&#39;</span><span class="p">)),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Add <code class="docutils literal notranslate"><span class="pre">rest_framework.authentication.TokenAuthentication</span></code> to Django REST Framework
+authentication strategies tuple:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_AUTHENTICATION_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework.authentication.TokenAuthentication&#39;</span><span class="p">,</span>
+        <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Run migrations - this step will create tables for <code class="docutils literal notranslate"><span class="pre">auth</span></code> and <code class="docutils literal notranslate"><span class="pre">authtoken</span></code> apps:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ ./manage.py migrate
+</pre></div>
+</div>
+</div>
+<div class="section" id="json-web-token-authentication">
+<h2>JSON Web Token Authentication<a class="headerlink" href="#json-web-token-authentication" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="django-settings">
+<h3>Django Settings<a class="headerlink" href="#django-settings" title="Permalink to this headline">¶</a></h3>
+<p>Add <code class="docutils literal notranslate"><span class="pre">rest_framework_simplejwt.authentication.JWTAuthentication</span></code> to
+Django REST Framework authentication strategies tuple:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_AUTHENTICATION_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework_simplejwt.authentication.JWTAuthentication&#39;</span><span class="p">,</span>
+        <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Configure <cite>django-rest-framework-simplejwt</cite> to use the
+<cite>Authorization: JWT &lt;access_token&gt;</cite> header:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SIMPLE_JWT</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s1">&#39;AUTH_HEADER_TYPES&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;JWT&#39;</span><span class="p">,),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="urls-py">
+<h3>urls.py<a class="headerlink" href="#urls-py" title="Permalink to this headline">¶</a></h3>
+<p>Configure <code class="docutils literal notranslate"><span class="pre">urls.py</span></code> with <code class="docutils literal notranslate"><span class="pre">djoser.url.jwt</span></code> module path:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="o">...</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^auth/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;djoser.urls&#39;</span><span class="p">)),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^auth/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;djoser.urls.jwt&#39;</span><span class="p">)),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="settings.html" class="btn btn-neutral float-right" title="Settings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sample_usage.html" class="btn btn-neutral float-left" title="Sample usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ibukun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

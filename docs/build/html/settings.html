@@ -1,0 +1,537 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Settings &mdash; shuntapp 2.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Base Endpoints" href="base_endpoints.html" />
+    <link rel="prev" title="Authentication Backends" href="authentication_backends.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> shuntapp
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_usage.html">Sample usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication_backends.html">Authentication Backends</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Settings &amp; API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#user-id-field">USER_ID_FIELD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#login-field">LOGIN_FIELD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#password-reset-confirm-url">PASSWORD_RESET_CONFIRM_URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#username-reset-confirm-url">USERNAME_RESET_CONFIRM_URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#send-activation-email">SEND_ACTIVATION_EMAIL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#send-confirmation-email">SEND_CONFIRMATION_EMAIL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#password-changed-email-confirmation">PASSWORD_CHANGED_EMAIL_CONFIRMATION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#username-changed-email-confirmation">USERNAME_CHANGED_EMAIL_CONFIRMATION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#activation-url">ACTIVATION_URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-create-password-retype">USER_CREATE_PASSWORD_RETYPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-username-retype">SET_USERNAME_RETYPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-password-retype">SET_PASSWORD_RETYPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#password-reset-confirm-retype">PASSWORD_RESET_CONFIRM_RETYPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#username-reset-confirm-retype">USERNAME_RESET_CONFIRM_RETYPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logout-on-password-change">LOGOUT_ON_PASSWORD_CHANGE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#password-reset-show-email-not-found">PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#username-reset-show-email-not-found">USERNAME_RESET_SHOW_EMAIL_NOT_FOUND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#token-model">TOKEN_MODEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#serializers">SERIALIZERS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#email">EMAIL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constants">CONSTANTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#social-auth-token-strategy">SOCIAL_AUTH_TOKEN_STRATEGY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#social-auth-allowed-redirect-uris">SOCIAL_AUTH_ALLOWED_REDIRECT_URIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#permissions">PERMISSIONS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hide-users">HIDE_USERS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="base_endpoints.html">Base Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="token_endpoints.html">Token Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jwt_endpoints.html">JWT Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="social_endpoints.html">Social Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration_guide.html">Migration Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">shuntapp</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Settings</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/settings.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="settings">
+<h1>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h1>
+<p>You can provide <code class="docutils literal notranslate"><span class="pre">DJOSER</span></code> settings like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DJOSER</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;PASSWORD_RESET_CONFIRM_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;#/password/reset/confirm/</span><span class="si">{uid}</span><span class="s1">/</span><span class="si">{token}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;USERNAME_RESET_CONFIRM_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;#/username/reset/confirm/</span><span class="si">{uid}</span><span class="s1">/</span><span class="si">{token}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ACTIVATION_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;#/activate/</span><span class="si">{uid}</span><span class="s1">/</span><span class="si">{token}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SEND_ACTIVATION_EMAIL&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;SERIALIZERS&#39;</span><span class="p">:</span> <span class="p">{},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All following setting names written in CAPS are keys on <code class="docutils literal notranslate"><span class="pre">DJOSER</span></code> dict.</p>
+</div>
+<div class="section" id="user-id-field">
+<h2>USER_ID_FIELD<a class="headerlink" href="#user-id-field" title="Permalink to this headline">¶</a></h2>
+<p>Name of a unique field in User model to be used as id for <code class="docutils literal notranslate"><span class="pre">/users/&lt;id&gt;/</span></code> endpoints.
+This is useful if you want to not change default primary key of the User model and hide from public.</p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">User._meta.pk.name</span></code> where <code class="docutils literal notranslate"><span class="pre">User</span></code> is the model set with Django’s setting AUTH_USER_MODEL.</p>
+</div>
+<div class="section" id="login-field">
+<h2>LOGIN_FIELD<a class="headerlink" href="#login-field" title="Permalink to this headline">¶</a></h2>
+<p>Name of a field in User model to be used as login field. This is useful if you
+want to change the login field from <code class="docutils literal notranslate"><span class="pre">username</span></code> to <code class="docutils literal notranslate"><span class="pre">email</span></code> without providing
+custom User model.</p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">User.USERNAME_FIELD</span></code> where <code class="docutils literal notranslate"><span class="pre">User</span></code> is the model set with Django’s setting AUTH_USER_MODEL.</p>
+</div>
+<div class="section" id="password-reset-confirm-url">
+<h2>PASSWORD_RESET_CONFIRM_URL<a class="headerlink" href="#password-reset-confirm-url" title="Permalink to this headline">¶</a></h2>
+<p>URL to your frontend password reset page. It should contain <code class="docutils literal notranslate"><span class="pre">{uid}</span></code> and
+<code class="docutils literal notranslate"><span class="pre">{token}</span></code> placeholders, e.g. <code class="docutils literal notranslate"><span class="pre">#/password-reset/{uid}/{token}</span></code>.
+You should pass <code class="docutils literal notranslate"><span class="pre">uid</span></code> and <code class="docutils literal notranslate"><span class="pre">token</span></code> to reset password confirmation endpoint.</p>
+<p><strong>Required</strong>: <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</div>
+<div class="section" id="username-reset-confirm-url">
+<h2>USERNAME_RESET_CONFIRM_URL<a class="headerlink" href="#username-reset-confirm-url" title="Permalink to this headline">¶</a></h2>
+<p>URL to your frontend username reset page. It should contain <code class="docutils literal notranslate"><span class="pre">{uid}</span></code> and
+<code class="docutils literal notranslate"><span class="pre">{token}</span></code> placeholders, e.g. <code class="docutils literal notranslate"><span class="pre">#/username-reset/{uid}/{token}</span></code>.
+You should pass <code class="docutils literal notranslate"><span class="pre">uid</span></code> and <code class="docutils literal notranslate"><span class="pre">token</span></code> to reset username confirmation endpoint.</p>
+<p><strong>Required</strong>: <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</div>
+<div class="section" id="send-activation-email">
+<h2>SEND_ACTIVATION_EMAIL<a class="headerlink" href="#send-activation-email" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> user will be required to click activation link sent in email after:</p>
+<ul class="simple">
+<li><p>creating an account</p></li>
+<li><p>updating their email</p></li>
+</ul>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</div>
+<div class="section" id="send-confirmation-email">
+<h2>SEND_CONFIRMATION_EMAIL<a class="headerlink" href="#send-confirmation-email" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, register or activation endpoint will send confirmation email to user.</p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</div>
+<div class="section" id="password-changed-email-confirmation">
+<h2>PASSWORD_CHANGED_EMAIL_CONFIRMATION<a class="headerlink" href="#password-changed-email-confirmation" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, change password endpoints will send confirmation email to user.</p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</div>
+<div class="section" id="username-changed-email-confirmation">
+<h2>USERNAME_CHANGED_EMAIL_CONFIRMATION<a class="headerlink" href="#username-changed-email-confirmation" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, change username endpoints will send confirmation email to user.</p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</div>
+<div class="section" id="activation-url">
+<h2>ACTIVATION_URL<a class="headerlink" href="#activation-url" title="Permalink to this headline">¶</a></h2>
+<p>URL to your frontend activation page. It should contain <code class="docutils literal notranslate"><span class="pre">{uid}</span></code> and <code class="docutils literal notranslate"><span class="pre">{token}</span></code>
+placeholders, e.g. <code class="docutils literal notranslate"><span class="pre">#/activate/{uid}/{token}</span></code>. You should pass <code class="docutils literal notranslate"><span class="pre">uid</span></code> and
+<code class="docutils literal notranslate"><span class="pre">token</span></code> to activation endpoint.</p>
+<p><strong>Required</strong>: <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</div>
+<div class="section" id="user-create-password-retype">
+<h2>USER_CREATE_PASSWORD_RETYPE<a class="headerlink" href="#user-create-password-retype" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, you need to pass <code class="docutils literal notranslate"><span class="pre">re_password</span></code> to
+<code class="docutils literal notranslate"><span class="pre">/users/</span></code> endpoint, to validate password equality.</p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</div>
+<div class="section" id="set-username-retype">
+<h2>SET_USERNAME_RETYPE<a class="headerlink" href="#set-username-retype" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, you need to pass <code class="docutils literal notranslate"><span class="pre">re_new_username</span></code> to
+<code class="docutils literal notranslate"><span class="pre">/users/set_username/</span></code> endpoint, to validate username equality.</p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</div>
+<div class="section" id="set-password-retype">
+<h2>SET_PASSWORD_RETYPE<a class="headerlink" href="#set-password-retype" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, you need to pass <code class="docutils literal notranslate"><span class="pre">re_new_password</span></code> to <code class="docutils literal notranslate"><span class="pre">/users/set_password/</span></code>
+endpoint, to validate password equality.</p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</div>
+<div class="section" id="password-reset-confirm-retype">
+<h2>PASSWORD_RESET_CONFIRM_RETYPE<a class="headerlink" href="#password-reset-confirm-retype" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, you need to pass <code class="docutils literal notranslate"><span class="pre">re_new_password</span></code> to <code class="docutils literal notranslate"><span class="pre">/users/reset_password_confirm/</span></code>
+endpoint in order to validate password equality.</p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</div>
+<div class="section" id="username-reset-confirm-retype">
+<h2>USERNAME_RESET_CONFIRM_RETYPE<a class="headerlink" href="#username-reset-confirm-retype" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, you need to pass <code class="docutils literal notranslate"><span class="pre">re_new_username</span></code> to
+<code class="docutils literal notranslate"><span class="pre">/users/reset_username_confirm/</span></code> endpoint in order to validate username equality.</p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</div>
+<div class="section" id="logout-on-password-change">
+<h2>LOGOUT_ON_PASSWORD_CHANGE<a class="headerlink" href="#logout-on-password-change" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, setting new password will logout the user.</p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Logout only works with token based authentication.</p>
+</div>
+</div>
+<div class="section" id="password-reset-show-email-not-found">
+<h2>PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND<a class="headerlink" href="#password-reset-show-email-not-found" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, posting a non-existent <code class="docutils literal notranslate"><span class="pre">email</span></code> to <code class="docutils literal notranslate"><span class="pre">/users/reset_password/</span></code> will return
+a <code class="docutils literal notranslate"><span class="pre">HTTP_400_BAD_REQUEST</span></code> response with an <code class="docutils literal notranslate"><span class="pre">EMAIL_NOT_FOUND</span></code> error message
+(‘User with given email does not exist.’).</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">False</span></code> (default), the <code class="docutils literal notranslate"><span class="pre">/users/reset_password/</span></code> endpoint will always return
+a <code class="docutils literal notranslate"><span class="pre">HTTP_204_NO_CONTENT</span></code> response.</p>
+<p>Please note that setting this to <code class="docutils literal notranslate"><span class="pre">True</span></code> will expose information whether
+an email is registered in the system.</p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</div>
+<div class="section" id="username-reset-show-email-not-found">
+<h2>USERNAME_RESET_SHOW_EMAIL_NOT_FOUND<a class="headerlink" href="#username-reset-show-email-not-found" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, posting a non-existent <code class="docutils literal notranslate"><span class="pre">email</span></code> to <code class="docutils literal notranslate"><span class="pre">/users/reset_username/</span></code> will return
+a <code class="docutils literal notranslate"><span class="pre">HTTP_400_BAD_REQUEST</span></code> response with an <code class="docutils literal notranslate"><span class="pre">EMAIL_NOT_FOUND</span></code> error message
+(‘User with given email does not exist.’).</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">False</span></code> (default), the <code class="docutils literal notranslate"><span class="pre">/users/reset_username/</span></code> endpoint will always return
+a <code class="docutils literal notranslate"><span class="pre">HTTP_204_NO_CONTENT</span></code> response.</p>
+<p>Please note that setting this to <code class="docutils literal notranslate"><span class="pre">True</span></code> will expose information whether
+an email is registered in the system.</p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</div>
+<div class="section" id="token-model">
+<h2>TOKEN_MODEL<a class="headerlink" href="#token-model" title="Permalink to this headline">¶</a></h2>
+<p>Points to which token model should be used for authentication. In case if
+only stateless tokens (e.g. JWT) are used in project it should be set to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p><strong>Example</strong>: <code class="docutils literal notranslate"><span class="pre">'knox.models.AuthToken'</span></code></p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">'rest_framework.authtoken.models.Token'</span></code></p>
+</div>
+<div class="section" id="serializers">
+<h2>SERIALIZERS<a class="headerlink" href="#serializers" title="Permalink to this headline">¶</a></h2>
+<p>Dictionary which maps djoser serializer names to serializer classes (use dotted path).
+This setting provides a way to easily override given serializer(s) - it is used
+to update the defaults, so by providing, e.g. one key, all the others will stay default.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Key <code class="docutils literal notranslate"><span class="pre">'user'</span></code> is used for general users whereas <code class="docutils literal notranslate"><span class="pre">'current_user'</span></code> lets you set
+serializer for special <code class="docutils literal notranslate"><span class="pre">/users/me</span></code> endpoint. They both default to the same serializer though.</p>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="s1">&#39;myapp.serializers.SpecialUserSerializer&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Default</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;activation&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.ActivationSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;password_reset&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.SendEmailResetSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;password_reset_confirm&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.PasswordResetConfirmSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;password_reset_confirm_retype&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.PasswordResetConfirmRetypeSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;set_password&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.SetPasswordSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;set_password_retype&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.SetPasswordRetypeSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;set_username&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.SetUsernameSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;set_username_retype&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.SetUsernameRetypeSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;username_reset&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.SendEmailResetSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;username_reset_confirm&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.UsernameResetConfirmSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;username_reset_confirm_retype&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.UsernameResetConfirmRetypeSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;user_create&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.UserCreateSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;user_create_password_retype&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.UserCreatePasswordRetypeSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;user_delete&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.UserDeleteSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.UserSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;current_user&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.UserSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;token&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.TokenSerializer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;token_create&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.serializers.TokenCreateSerializer&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="email">
+<h2>EMAIL<a class="headerlink" href="#email" title="Permalink to this headline">¶</a></h2>
+<p>Dictionary which maps djoser email names to paths to email classes.
+Same as in case of <code class="docutils literal notranslate"><span class="pre">SERIALIZERS</span></code> it allows partial override.</p>
+<p><strong>Examples</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;activation&#39;</span><span class="p">:</span> <span class="s1">&#39;myapp.email.AwesomeActivationEmail&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Default</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;activation&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.email.ActivationEmail&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;confirmation&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.email.ConfirmationEmail&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;password_reset&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.email.PasswordResetEmail&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;password_changed_confirmation&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.email.PasswordChangedConfirmationEmail&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;username_changed_confirmation&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.email.UsernameChangedConfirmationEmail&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;username_reset&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.email.UsernameResetEmail&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="constants">
+<h2>CONSTANTS<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<p>Dictionary which maps djoser constant names to paths to constant classes.
+Same as in case of <code class="docutils literal notranslate"><span class="pre">SERIALIZERS</span></code> it allows partial override.</p>
+<p><strong>Examples</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;messages&#39;</span><span class="p">:</span> <span class="s1">&#39;myapp.constants.CustomMessages&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Default</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;messages&#39;</span><span class="p">:</span> <span class="s1">&#39;djoser.constants.Messages&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="social-auth-token-strategy">
+<h2>SOCIAL_AUTH_TOKEN_STRATEGY<a class="headerlink" href="#social-auth-token-strategy" title="Permalink to this headline">¶</a></h2>
+<p>String path to class responsible for token strategy used by social authentication.</p>
+<p><strong>Example</strong>: <code class="docutils literal notranslate"><span class="pre">'myapp.token.MyStrategy'</span></code></p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">'djoser.social.token.jwt.TokenStrategy'</span></code></p>
+</div>
+<div class="section" id="social-auth-allowed-redirect-uris">
+<h2>SOCIAL_AUTH_ALLOWED_REDIRECT_URIS<a class="headerlink" href="#social-auth-allowed-redirect-uris" title="Permalink to this headline">¶</a></h2>
+<p>List of allowed redirect URIs for social authentication.</p>
+<p><strong>Example</strong>: <code class="docutils literal notranslate"><span class="pre">['https://auth.example.com']</span></code></p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div>
+<div class="section" id="permissions">
+<span id="view-permission-settings"></span><h2>PERMISSIONS<a class="headerlink" href="#permissions" title="Permalink to this headline">¶</a></h2>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 2.0.</span></p>
+</div>
+<p>Dictionary that maps permissions to certain views across Djoser.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">Admin</span></code> in class names refers to users that have <code class="docutils literal notranslate"><span class="pre">is_staff</span></code> flag set to True,
+not superusers.</p>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;djoser.permissions.CurrentUserOrAdminOrReadOnly&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Defaults</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;activation&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rest_framework.permissions.AllowAny&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;password_reset&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rest_framework.permissions.AllowAny&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;password_reset_confirm&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rest_framework.permissions.AllowAny&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;set_password&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;djoser.permissions.CurrentUserOrAdmin&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;username_reset&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rest_framework.permissions.AllowAny&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;username_reset_confirm&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rest_framework.permissions.AllowAny&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;set_username&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;djoser.permissions.CurrentUserOrAdmin&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;user_create&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rest_framework.permissions.AllowAny&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;user_delete&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;djoser.permissions.CurrentUserOrAdmin&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;djoser.permissions.CurrentUserOrAdmin&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;user_list&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;djoser.permissions.CurrentUserOrAdmin&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;token_create&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rest_framework.permissions.AllowAny&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;token_destroy&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rest_framework.permissions.IsAuthenticated&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hide-users">
+<span id="hide-users-setting"></span><h2>HIDE_USERS<a class="headerlink" href="#hide-users" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.0.</span></p>
+</div>
+<p>If set to True, listing <code class="docutils literal notranslate"><span class="pre">/users/</span></code> enpoint by normal user will return only
+that user’s profile in the list. Beside that, accessing <code class="docutils literal notranslate"><span class="pre">/users/&lt;id&gt;/</span></code>
+endpoints by user without proper permission will result in HTTP 404 instead of HTTP 403.</p>
+<p><strong>Default</strong>: <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="base_endpoints.html" class="btn btn-neutral float-right" title="Base Endpoints" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="authentication_backends.html" class="btn btn-neutral float-left" title="Authentication Backends" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ibukun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

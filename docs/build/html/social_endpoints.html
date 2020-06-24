@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Social Endpoints &mdash; shuntapp 2.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Signals" href="signals.html" />
+    <link rel="prev" title="JWT Endpoints" href="jwt_endpoints.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> shuntapp
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_usage.html">Sample usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication_backends.html">Authentication Backends</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Settings &amp; API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base_endpoints.html">Base Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="token_endpoints.html">Token Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jwt_endpoints.html">JWT Endpoints</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Social Endpoints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#provider-auth">Provider Auth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration_guide.html">Migration Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">shuntapp</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Social Endpoints</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/social_endpoints.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="social-endpoints">
+<h1>Social Endpoints<a class="headerlink" href="#social-endpoints" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This API is in beta quality - backward compatibility is not guaranteed in
+future versions and you may come across bugs.</p>
+</div>
+<div class="section" id="provider-auth">
+<h2>Provider Auth<a class="headerlink" href="#provider-auth" title="Permalink to this headline">¶</a></h2>
+<p>Using these endpoints you can authenticate with external tools.</p>
+<p>The workflow should look like this:</p>
+<ol class="arabic simple">
+<li><p>Access the endpoint providing a <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> that would perform the
+<code class="docutils literal notranslate"><span class="pre">POST</span></code> action later.</p></li>
+<li><p>The request would return a JSON containing one key <code class="docutils literal notranslate"><span class="pre">authorization_url</span></code>.
+Redirect the user to that URL.</p></li>
+<li><p>When the user authenticates with the external tool, that tool would redirect
+them to the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> you provided with a <code class="docutils literal notranslate"><span class="pre">GET</span></code> querystring
+containing two arguments: <code class="docutils literal notranslate"><span class="pre">code</span></code> and <code class="docutils literal notranslate"><span class="pre">state</span></code></p></li>
+<li><p>From the view that your user got redirected to, issue a <code class="docutils literal notranslate"><span class="pre">POST</span></code> request
+to the endpoint with the <code class="docutils literal notranslate"><span class="pre">code</span></code> and <code class="docutils literal notranslate"><span class="pre">state</span></code> arguments. You should use
+<code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> not JSON.  The user should be now
+authenticated in your application.</p></li>
+</ol>
+<p>The list of providers is available at
+<a class="reference external" href="https://python-social-auth.readthedocs.io/en/latest/backends/index.html#social-backends">social backend docs</a>.
+please follow the instructions provided there to configure your backend.</p>
+<p>Configure <code class="docutils literal notranslate"><span class="pre">urls.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="o">...</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^auth/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;djoser.social.urls&#39;</span><span class="p">)),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Default URL</strong>: <code class="docutils literal notranslate"><span class="pre">/o/{{</span> <span class="pre">provider</span> <span class="pre">}}/</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> is provided via GET parameters - not JSON</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">state</span></code> parameter isn’t always required e.g. in case of OpenID backends</p></li>
+</ul>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 43%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Request</p></th>
+<th class="head"><p>Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GET</span></code></p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code></p></li>
+</ul>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HTTP_200_OK</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">authorization_url</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">HTTP_400_BAD_REQUEST</span></code></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">POST</span></code></p></td>
+<td><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">code</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">state</span></code></p></li>
+</ul>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HTTP_201_CREATED</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">token</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">HTTP_400_BAD_REQUEST</span></code></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">non_field_errors</span></code></p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="signals.html" class="btn btn-neutral float-right" title="Signals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="jwt_endpoints.html" class="btn btn-neutral float-left" title="JWT Endpoints" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ibukun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

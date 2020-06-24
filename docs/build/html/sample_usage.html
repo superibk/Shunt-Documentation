@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sample usage &mdash; shuntapp  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Base Endpoints" href="base_endpoints.html" />
+    <link rel="prev" title="Getting started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> shuntapp
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sample usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="base_endpoints.html">Base Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="token_endpoints.html">Token Endpoints</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">shuntapp</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Sample usage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sample_usage.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sample-usage">
+<h1>Sample usage<a class="headerlink" href="#sample-usage" title="Permalink to this headline">¶</a></h1>
+<p>In this extremely short tutorial we are going to mimic the simplest flow:
+register user, log in and log out. We will also check resource access on each consecutive step.
+Let’s go!</p>
+<p>Register a new user:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ curl -X POST https://shuntapp.herokuapp.com/auth/users/ --data &#39;username=shuntuser&amp;password=alpine12&#39;
+{&quot;email&quot;: &quot;&quot;, &quot;username&quot;: &quot;shuntuser&quot;, &quot;id&quot;:1}
+</pre></div>
+</div>
+<p>So far, so good. We have just created a new user using REST API.</p>
+<p>Let’s access user’s details:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ curl -LX GET https://shuntapp.herokuapp.com/auth/users/me/
+{&quot;detail&quot;: &quot;Authentication credentials were not provided.&quot;}
+</pre></div>
+</div>
+<p>As we can see, we cannot access user profile without logging in. Pretty obvious.</p>
+<p>Let’s log in:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>curl -X POST https://shuntapp.herokuapp.com/auth/token/login/ --data &#39;username=shuntuser&amp;password=alpine12&#39;
+{&quot;auth_token&quot;: &quot;b704c9fc3655635646356ac2950269f352ea1139&quot;}
+</pre></div>
+</div>
+<p>We have just obtained an authorization token that we may use later in order to retrieve specific resources.</p>
+<p>Let’s access user’s details again:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ curl -LX GET https://shuntapp.herokuapp.com/auth/users/me/
+{&quot;detail&quot;: &quot;Authentication credentials were not provided.&quot;}
+</pre></div>
+</div>
+<p>Access is still forbidden but let’s offer the token we obtained:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ curl -LX GET https://shuntapp.herokuapp.com/auth/users/me/ -H &#39;Authorization: Token b704c9fc3655635646356ac2950269f352ea1139&#39;
+{&quot;email&quot;: &quot;&quot;, &quot;username&quot;: &quot;shuntuser&quot;, &quot;id&quot;: 1}
+</pre></div>
+</div>
+<p>Yay, it works!</p>
+<p>Now let’s log out:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>curl -X POST https://shuntapp.herokuapp.com/auth/token/logout/ -H &#39;Authorization: Token b704c9fc3655635646356ac2950269f352ea1139&#39;
+</pre></div>
+</div>
+<p>And try access user profile again:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ curl -LX GET https://shuntapp.herokuapp.com/auth/users/me/ -H &#39;Authorization: Token b704c9fc3655635646356ac2950269f352ea1139&#39;
+{&quot;detail&quot;: &quot;Invalid token&quot;}
+</pre></div>
+</div>
+<p>As we can see, user has been logged out successfully and the proper token has been removed.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="base_endpoints.html" class="btn btn-neutral float-right" title="Base Endpoints" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ibukun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
